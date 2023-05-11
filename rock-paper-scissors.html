@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rock Paper Scissors</title>
+    <style>
+      body {
+        background-color: rgb(0, 0, 0);
+        color: white;
+        display: flex;
+      }
+      .container{
+        margin: auto;
+        background-color: #2b2b2b;
+        padding: .5em 1em;
+        border-radius: 10px;
+       
+      }
+      button {
+        cursor: pointer;
+      }
+      button.item {
+        background-color: transparent;
+        border: 1px solid white;
+        padding: 0.5em;
+        font-size: 2em;
+        border-radius: 50%;
+        margin-left: 0.3em;
+      }
+      button.reset {
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+        border-radius: 30px;
+        padding: 0.5em 1em;
+        transition: hover 0.5s;
+      }
+      button.reset:hover {
+        color: black;
+        background-color: white;
+      }
+      .result{
+        display: flex;
+        justify-content: space-between;
+      }
+      .move{
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Rock Paper Scissors</h1>
+      <div class="move">
+        <button
+          class="item"
+          onclick="let btnNum = 0;
+          let ranNum = Math.round(Math.random()*10)%3;
+          playerMove = '✊';
+          if(ranNum === 0){
+            comMove = '✊';
+            tie ++;
+          }else if (ranNum === 1){
+            comMove = '🖐';
+            loss ++;
+          }else{
+            comMove = '✌';
+            win ++;
+          }
+          displayPoints();
+          displayMove(playerMove, comMove);"
+        >
+          ✊
+        </button>
+        <button
+          class="item"
+          onclick="btnNum = 1;
+          ranNum = Math.round(Math.random()*10)%3;
+          playerMove = '🖐';
+            if(ranNum === 0){
+            comMove = '✊';
+            win ++;
+          }else if (ranNum === 1){
+            comMove = '🖐';
+            tie ++;
+          }else{
+            comMove = '✌';
+            loss ++;
+          }
+          displayPoints();
+          displayMove(playerMove, comMove);"
+        >
+          🖐
+        </button>
+        <button
+          class="item"
+          onclick="btnNum = 2;
+          ranNum = Math.round(Math.random()*10)%3;
+          playerMove = '✌';
+            if(ranNum === 0){
+            comMove = '✊';
+            loss ++;
+          }else if (ranNum === 1){
+            comMove = '🖐';
+            win ++;
+          }else{
+            comMove = '✌';
+            tie ++;
+          }
+          displayPoints();
+          displayMove(playerMove, comMove);"
+        >
+          ✌
+        </button>
+      </div>
+      <div class="result">
+        <p id="win">Wins:</p>
+        <p id="loss">Losses:</p>
+        <p id="tie">Ties:</p>
+      </div>
+      <p id="displayMove"></p>
+      <button
+        class="reset"
+        onclick="win = 0; loss = 0; tie =0;
+      displayPoints();
+      document.querySelector('#displayMove').innerHTML = '';
+      "
+      >
+        Reset Score
+      </button>
+    </div>
+
+    <script>
+      let comMove = "";
+      let playerMove = "";
+      let win = 0;
+      let loss = 0;
+      let tie = 0;
+
+      function displayPoints() {
+        document.querySelector("#win").innerHTML = "Wins: " + win;
+        document.querySelector("#loss").innerHTML = "Losses: " + loss;
+        document.querySelector("#tie").innerHTML = "Ties: " + tie;
+      }
+      function displayMove(pMove, cMove) {
+        document.querySelector(
+          "#displayMove"
+        ).innerHTML = `You ${pMove}  ${cMove} Computer`;
+      }
+    </script>
+  </body>
+</html>
